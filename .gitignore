@@ -12,6 +12,3 @@ venv/
 # Python bytecode
 __pycache__/
 *.pyc
-
-# Logs
-*.log
