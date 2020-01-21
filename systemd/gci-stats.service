@@ -1,0 +1,26 @@
+[Unit]
+Description=Run GCI stats fetcher
+After=network.target
+Requires=network.target
+
+[Service]
+Type=simple
+Restart=no
+User=gci
+Group=gci
+WorkingDirectory=/home/gci/stats
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/home/gci/stats/venv/bin/python /home/gci/stats/get_stats.py localhost
+
+# Security
+PrivateTmp=true
+ProtectSystem=full
+NoNewPrivileges=true
+ProtectControlGroups=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+PrivateDevices=true
+RestrictAddressFamilies=AF_INET AF_INET6
+RestrictNamespaces=true
+RestrictRealtime=true
+SystemCallArchitectures=native
